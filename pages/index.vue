@@ -7,7 +7,7 @@
             <VibeVoiceTechnology />
             <VibeVoiceUseCases />
             <VibeVoiceFaq />
-            <VibeVoiceCallToAction />
+            <!-- <VibeVoiceCallToAction /> -->
     </div>
 </template>
 
@@ -23,9 +23,9 @@ import VibeVoiceCallToAction from '~/components/VibeVoice/CallToAction.vue';
 import VibeVoiceFooter from '~/components/VibeVoice/Footer.vue';
 
 useHead({
-    title: 'VibeVoice | Studio-Grade AI Voice & Podcast Generator',
+    title: 'VibeVoice - Best TTS for Long-Form Multi-Speaker Audio',
     meta: [
-        { name: 'description', content: 'Generate lifelike, multi-speaker audio with VibeVoice AI. Our 1.5B model delivers natural TTS and cross-lingual synthesis for podcasts, audiobooks, and creators. Try VibeVoice free and get bonus credits.' }
+        { name: 'description', content: 'Microsoft VibeVoice delivers long-form, multi-speaker, conversational TTS with natural flow and cross-language support.' }
     ],
     link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },

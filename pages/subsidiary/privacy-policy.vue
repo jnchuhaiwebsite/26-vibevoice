@@ -78,8 +78,8 @@
             <li>Opt out of certain data processing activities.</li>
           </ul>
           <p class="mt-4">To exercise these rights, please contact our support team at <a
-              href="mailto:support@musesteamer2.com"
-              class="text-banana-secondary-blue hover:underline">support@musesteamer2.com</a>.</p>
+              href="mailto:support@vibeVoices.net"
+              class="text-banana-secondary-blue hover:underline">support@vibeVoices.net</a>.</p>
 
           <h2 class="text-2xl font-bold mt-8 mb-4 text-banana-primary-yellow">7. Security</h2>
           <p>We implement industry-standard technical and organizational measures to protect your information from
@@ -96,8 +96,8 @@
 
           <h2 class="text-2xl font-bold mt-8 mb-4 text-banana-primary-yellow">10. Contact Us</h2>
           <p>If you have any questions or concerns about this Privacy Policy, please do not hesitate to contact us at:
-            <a href="mailto:support@musesteamer2.com"
-              class="text-banana-secondary-blue hover:underline">support@musesteamer2.com</a></p>
+            <a href="mailto:support@vibeVoices.net"
+              class="text-banana-secondary-blue hover:underline">support@vibeVoices.net</a></p>
 
               <p class="text-sm mt-8">Last updated: August 29,2025</p>
         </section>

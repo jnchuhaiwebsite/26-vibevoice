@@ -4,8 +4,8 @@ import { useRuntimeConfig } from 'nuxt/app'
 // console.log('当前环境:', process.env.NODE_ENV);
 
 const baseUrl = process.env.NODE_ENV === 'development'
-  ? 'https://art.vibeVoices.net '
-  : 'https://art.vibeVoices.net ';
+  ? 'https://art.vibeVoices.net'
+  : 'https://art.vibeVoices.net';
 
 // const baseUrl = 'https://art.aimagen43.com';
 // const baseUrl = 'http://192.168.0.55:8686';
@@ -231,6 +231,7 @@ export const checkTask = async (task_id:string) => {
  * @returns 友情链接列表
  */
 export const getFriendLinkList = async () => {
+
   return apiRequest(urlList.friendLinkList, 'GET', undefined, false);
 }
 
