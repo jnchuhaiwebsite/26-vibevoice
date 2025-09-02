@@ -5,7 +5,7 @@
             <div class="text-center mb-16"><h2 class="text-4xl md:text-5xl font-black text-white">Dive Into the Dialogue with VibeVoice</h2><p class="mt-4 text-lg text-[#9CA3AF] max-w-3xl mx-auto">Experience the nuance of a VibeVoice-generated conversation. Play the audio and watch the transcript come alive.</p></div>
             <div class="max-w-4xl mx-auto bg-[#111827] rounded-2xl border border-[#1F2937] shadow-2xl shadow-black/50 overflow-hidden">
                 <div class="p-6 border-b border-[#1F2937]"><h3 class="text-xl font-bold text-white mb-2">VibeVoice Case Study: An Emotional Conversation</h3>
-                     <AudioPlayer ref="audioPlayerRef" id="showcase-audio" src="https://resp.vibeVoices.net/vvoice/mp3/SpontaneousEmotion.mp3" class="mt-4" />
+                     <AudioPlayer ref="audioPlayerRef" id="showcase-audio" src="https://resp.vibevoices.net /vvoice/mp3/SpontaneousEmotion.mp3" class="mt-4" />
                 </div>
                 <div id="transcript-container" class="transcript-container max-h-[400px] overflow-y-auto">
                     <div
