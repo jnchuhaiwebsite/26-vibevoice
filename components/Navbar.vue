@@ -8,14 +8,16 @@
         <div class="flex items-center justify-between h-20">
           <!-- Logo -->
           <div class="flex-shrink-0">
-            <NuxtLink to="/" title="VibeVoice Home">
+            <NuxtLink to="/" title="VibeVoice Home" class="flex items-center">
+              <img src="/favicon.ico" alt="VibeVoice Logo" class="h-8 w-8 mr-2">
               <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <linearGradient id="logo-gradient" x1="0" y1="20" x2="160" y2="20" gradientUnits="userSpaceOnUse">
                     <stop stop-color="#6A11CB"/>
                     <stop offset="1" stop-color="#2575FC"/>
-                  </linearGradient>
+                  </linearGradient>      
                 </defs>
+                
                 <text x="0" y="30" font-family="Inter, sans-serif" font-size="28" font-weight="900" letter-spacing="-0.05em" fill="url(#logo-gradient)">
                   VibeVoice
                 </text>
