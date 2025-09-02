@@ -22,7 +22,8 @@
         <!-- Logo 和描述 -->
         <div class="flex-1">
           <div class="flex flex-col items-center text-center">
-            <NuxtLink to="/" title="VibeVoice Home">
+            <NuxtLink to="/" title="VibeVoice Home"  class="flex items-center">
+              <img src="/favicon.ico" alt="VibeVoice Logo" class="h-8 w-8 mr-2">
               <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <linearGradient id="logo-gradient-footer" x1="0" y1="20" x2="160" y2="20" gradientUnits="userSpaceOnUse">
