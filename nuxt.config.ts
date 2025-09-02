@@ -125,7 +125,7 @@ export default defineNuxtConfig({
       ], // 外部脚本
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'canonical', href: 'https://www.vibevoices.net  ' }
+        { rel: 'canonical', href: 'https://www..vibevoices.net ' }
       ]
     }
   },

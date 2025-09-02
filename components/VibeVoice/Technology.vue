@@ -3,7 +3,7 @@
     <section id="technology" class="py-24 px-6">
         <div class="container">
             <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
-                <img src="https://resp.vibevoices.net /vvoice/image/vibevoice.png" loading="lazy" alt="VibeVoice Technology Architecture" class="max-h-full w-full rounded-md object-cover">
+                <img src="https://resp..vibevoices.net/vvoice/image/vibevoice.png" loading="lazy" alt="VibeVoice Technology Architecture" class="max-h-full w-full rounded-md object-cover">
                 <div class="flex flex-col lg:text-left">
                     <h2 class="mb-6 text-pretty text-3xl font-bold text-white lg:text-4xl">VibeVoice is Powered by Microsoft's VALL-E X Model</h2>
                     <p class="mb-8 max-w-xl text-[#D1D5DB] lg:max-w-none lg:text-lg">Understand the groundbreaking open-source technology that makes this AI Voice Generator, VibeVoice, possible.</p>
