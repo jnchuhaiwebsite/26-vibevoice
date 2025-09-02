@@ -5,18 +5,22 @@
 
       <!-- 友情链接区域 -->
       <div class="mb-8" v-if="partnerSites && partnerSites.length > 0">
-        <div class="text-banana-text-light font-medium mb-4 text-left text-sm md:text-lg">Partner Sites</div>
-        <div class="flex flex-wrap gap-x-6 gap-y-2">
-          <a v-for="(item, index) in partnerSites" :key="index" :href="item.url" target="_blank"
-            rel="noopener noreferrer"
-            :title="item.url"
-            class="text-banana-text-muted hover:text-banana-primary-yellow transition-colors text-sm">
-            {{ item.name }}
-          </a>
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center md:text-left mb-4 md:mb-0">
+              <h3 class="text-xl font-bold text-white">VibeVoice</h3>
+              <p class="text-sm text-[#9CA3AF]">The open-source future of voice.</p>
+            </div>
+            <div class="flex space-x-6 text-[#D1D5DB]">
+              <a href="#features" class="hover:text-white transition">Features</a>
+              <a href="https://github.com/microsoft/VALL-E-X" class="hover:text-white transition" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="#faq" class="hover:text-white transition">FAQ</a>
+              <NuxtLink to="/subsidiary/terms-of-service" class="hover:text-white transition">Terms</NuxtLink>
+            </div>
+        </div>
+        <div class="mt-8 border-t border-[rgba(255,255,255,0.08)] pt-8 text-center text-sm text-[#9CA3AF]">
+            <p>&copy; 2024 VibeVoice Project. Use responsibly. Do not generate harmful or misleading content.</p>
         </div>
       </div>
-
-      <!-- 分割线 -->
       <div class="w-full h-px  mb-8 border-t border-white/30" v-if="partnerSites && partnerSites.length > 0"></div>
 
       <!-- 主要内容区域 -->
@@ -24,27 +28,26 @@
         <!-- Logo 和描述 -->
         <div class="flex-1">
           <div class="flex flex-col items-center text-center">
-            <NuxtLink to="/" title="OmniHuman Home">
-              <svg width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="logoGradient" x1="0%" y1="50%" x2="100%" y2="50%">
-                      <stop offset="0%" stop-color="#FFFFFF" />
-                      <stop offset="100%" stop-color="#E0E0E0" />
-                    </linearGradient>
-                  </defs>
-                  <text x="10" y="30" font-family="Montserrat, sans-serif" font-size="24" fill="url(#logoGradient)">
-                    <tspan font-weight="normal">Omni</tspan><tspan font-weight="bold" fill="#ff4081">Human</tspan>
-                  </text>
+            <NuxtLink to="/" title="VibeVoice Home">
+              <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="logo-gradient-footer" x1="0" y1="20" x2="160" y2="20" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#6A11CB"/>
+                    <stop offset="1" stop-color="#2575FC"/>
+                  </linearGradient>
+                </defs>
+                <text x="0" y="30" font-family="Inter, sans-serif" font-size="28" font-weight="900" letter-spacing="-0.05em" fill="url(#logo-gradient-footer)">
+                  VibeVoice
+                </text>
               </svg>
             </NuxtLink>
             <p class="max-w-xl mx-auto mb-4 text-sm">
-              Unleash your creativity with OmniHuman, the advanced AI video generator. Transform static images into
-              stunning, cinematic videos with simple text prompts. Start creating for free!
+              The open-source future of voice. Use responsibly. Do not generate harmful or misleading content.
             </p>
             <div class="text-sm">
-              <p>© 2025 OmniHuman All rights reserved.</p>
+              <p>© 2024 VibeVoice Project. All rights reserved.</p>
               <p>
-                <a href="mailto:support@omniHuman-15.com" class="footer-link" title="Email">support@omniHuman-15.com</a>
+                <a href="mailto:support@vibevoice.com" class="footer-link" title="Email">support@vibevoice.com</a>
               </p>
             </div>
           </div>
@@ -73,6 +76,7 @@
 </template>
 
 <script setup lang="ts">
+// 保留现有的脚本逻辑
 import { ref } from 'vue'
 import { useNavigation } from '~/utils/navigation'
 import { getFriendLinkList } from '~/api'

@@ -15,14 +15,19 @@ export interface RouteItem {
 
 // 主路由配置
 export const mainRoutes: RouteItem[] = [
-  { id: "hero", name: "Home", href: "/"},
-  { id: "video-showcase", name: "Showcase" },
-  { id: "positioning", name: "Positioning" },
+  { id: "samples", name: "Samples" },
   { id: "features", name: "Features" },
-  { id: "users-value", name: "Users" },
-  { id: "use-cases", name: "Use Cases" },
-  // { id: "pricing", name: "Pricing", href: "/pricing" },
-  // { id: "blog",  name: "Blog", href: "/blog" },
+  { id: "showcase", name: "Showcase" },
+  { id: "technology", name: "Technology" },
+  { id: "faq", name: "FAQ" },
+]
+
+export const vibeVoiceRoutes: RouteItem[] = [
+  { name: 'Samples', href: '/vibevoice#samples' },
+  { name: 'Features', href: '/vibevoice#features' },
+  { name: 'Showcase', href: '/vibevoice#showcase' },
+  { name: 'Technology', href: '/vibevoice#technology' },
+  { name: 'FAQ', href: '/vibevoice#faq' },
 ]
 
 

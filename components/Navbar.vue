@@ -8,16 +8,16 @@
         <div class="flex items-center justify-between h-20">
           <!-- Logo -->
           <div class="flex-shrink-0">
-            <NuxtLink to="/" title="OmniHuman Home">
-              <svg width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+            <NuxtLink to="/" title="VibeVoice Home">
+              <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                  <linearGradient id="logoGradient" x1="0%" y1="50%" x2="100%" y2="50%">
-                    <stop offset="0%" stop-color="#FFFFFF" />
-                    <stop offset="100%" stop-color="#E0E0E0" />
+                  <linearGradient id="logo-gradient" x1="0" y1="20" x2="160" y2="20" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#6A11CB"/>
+                    <stop offset="1" stop-color="#2575FC"/>
                   </linearGradient>
                 </defs>
-                <text x="10" y="30" font-family="Montserrat, sans-serif" font-size="24" fill="url(#logoGradient)">
-                  <tspan font-weight="normal">Omni</tspan><tspan font-weight="bold" fill="#ff4081">Human</tspan>
+                <text x="0" y="30" font-family="Inter, sans-serif" font-size="28" font-weight="900" letter-spacing="-0.05em" fill="url(#logo-gradient)">
+                  VibeVoice
                 </text>
               </svg>
             </NuxtLink>
@@ -26,13 +26,14 @@
           <!-- PC端导航 -->
           <div class="hidden lg:flex items-center flex-grow space-x-4 ml-6">
             <template v-for="(section, index) in sections" :key="index">
-              <NuxtLink
-                :to="section.href || `/#${section.id}`"
+              <a
+                @click.prevent="handleNavClick(section.id)"
+                :href="section.href || `#${section.id}`"
                 :title="section.name"
                 class="relative text-banana-text-light hover:text-banana-primary-yellow transition-all cursor-pointer px-4 py-2.5 rounded-lg hover:shadow-lg whitespace-nowrapr" 
               >
                 {{ section.name }}
-              </NuxtLink>
+              </a>
             </template>
           </div>
 
@@ -131,13 +132,13 @@
             <!-- 导航链接 -->
             <div class="space-y-2 mb-6">
               <template v-for="(section, index) in sections" :key="index">
-                <NuxtLink
-                  :to="section.href || `/#${section.id}`"
-                  @click="isOpen = false"
+                <a
+                  @click.prevent="handleMobileNavClick(section.id)"
+                  :href="section.href || `/#${section.id}`"
                   class="block text-gray-300 hover:text-[#f49d25] text-base py-2 transition-colors cursor-pointer"
                 >
                   {{ section.name }}
-                </NuxtLink>
+                </a>
               </template>
               <!-- <NuxtLink
                 v-if="isSignedIn"
@@ -197,6 +198,11 @@ const getUserInfo = async () => {
 // 使用导航工具
 const { activeSection, sections, handleNavClick, handleScroll, executeScroll } =
   useNavigation();
+
+const handleMobileNavClick = (sectionId?: string) => {
+  isOpen.value = false;
+  handleNavClick(sectionId);
+}
 
 onMounted(async () => {
   // 只重置overflow，不改变滚动位置
