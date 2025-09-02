@@ -5,20 +5,14 @@
 
       <!-- 友情链接区域 -->
       <div class="mb-8" v-if="partnerSites && partnerSites.length > 0">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-            <div class="text-center md:text-left mb-4 md:mb-0">
-              <h3 class="text-xl font-bold text-white">VibeVoice</h3>
-              <p class="text-sm text-[#9CA3AF]">The open-source future of voice.</p>
-            </div>
-            <div class="flex space-x-6 text-[#D1D5DB]">
-              <a href="#features" class="hover:text-white transition">Features</a>
-              <a href="https://github.com/microsoft/VALL-E-X" class="hover:text-white transition" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="#faq" class="hover:text-white transition">FAQ</a>
-              <NuxtLink to="/subsidiary/terms-of-service" class="hover:text-white transition">Terms</NuxtLink>
-            </div>
-        </div>
-        <div class="mt-8 border-t border-[rgba(255,255,255,0.08)] pt-8 text-center text-sm text-[#9CA3AF]">
-            <p>&copy; 2024 VibeVoice Project. Use responsibly. Do not generate harmful or misleading content.</p>
+        <div class="text-banana-text-light font-medium mb-4 text-left text-sm md:text-lg">Partner Sites</div>
+        <div class="flex flex-wrap gap-x-6 gap-y-2">
+          <a v-for="(item, index) in partnerSites" :key="index" :href="item.url" target="_blank"
+            rel="noopener noreferrer"
+            :title="item.url"
+            class="text-banana-text-muted hover:text-banana-primary-yellow transition-colors text-sm">
+            {{ item.name }}
+          </a>
         </div>
       </div>
       <div class="w-full h-px  mb-8 border-t border-white/30" v-if="partnerSites && partnerSites.length > 0"></div>
@@ -47,7 +41,7 @@
             <div class="text-sm">
               <p>© 2024 VibeVoice Project. All rights reserved.</p>
               <p>
-                <a href="mailto:support@vibevoice.com" class="footer-link" title="Email">support@vibevoice.com</a>
+                <a href="mailto:support@vibeVoices.net" class="footer-link" title="Email">support@vibeVoices.net</a>
               </p>
             </div>
           </div>

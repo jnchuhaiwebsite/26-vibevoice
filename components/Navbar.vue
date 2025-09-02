@@ -26,14 +26,12 @@
           <!-- PC端导航 -->
           <div class="hidden lg:flex items-center flex-grow space-x-4 ml-6">
             <template v-for="(section, index) in sections" :key="index">
-              <a
-                @click.prevent="handleNavClick(section.id)"
-                :href="section.href || `#${section.id}`"
-                :title="section.name"
+              <nuxt-link
+                :to="section.href || `/#${section.id}`"
                 class="relative text-banana-text-light hover:text-banana-primary-yellow transition-all cursor-pointer px-4 py-2.5 rounded-lg hover:shadow-lg whitespace-nowrapr" 
               >
                 {{ section.name }}
-              </a>
+              </nuxt-link>
             </template>
           </div>
 
@@ -132,13 +130,12 @@
             <!-- 导航链接 -->
             <div class="space-y-2 mb-6">
               <template v-for="(section, index) in sections" :key="index">
-                <a
-                  @click.prevent="handleMobileNavClick(section.id)"
-                  :href="section.href || `/#${section.id}`"
+              <nuxt-link
+                :to="section.href || `/#${section.id}`"
                   class="block text-gray-300 hover:text-[#f49d25] text-base py-2 transition-colors cursor-pointer"
                 >
                   {{ section.name }}
-                </a>
+                  </nuxt-link>
               </template>
               <!-- <NuxtLink
                 v-if="isSignedIn"

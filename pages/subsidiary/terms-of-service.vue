@@ -65,7 +65,7 @@
           <p>To the maximum extent permitted by law, MuseSteamer AI shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of the Service.</p>
 
           <h2 class="text-2xl font-bold mt-8 mb-4 text-banana-primary-yellow">10. Contact Information</h2>
-          <p>For any questions or concerns regarding these Terms of Service, please contact us at: <a href="mailto:support@musesteamer2.com" class="text-banana-secondary-blue hover:underline">support@musesteamer2.com</a></p>
+          <p>For any questions or concerns regarding these Terms of Service, please contact us at: <a href="mailto:support@vibeVoices.net" class="text-banana-secondary-blue hover:underline">support@vibeVoices.net</a></p>
           <p class="text-sm mt-8">Last updated: August 29,2025</p>
         </section>
 
