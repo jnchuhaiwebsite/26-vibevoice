@@ -319,7 +319,7 @@ onMounted(() => {
     "@type": "Blog",
     name: "Midjourney Video Generator Blog",
     description: "Professional AI image generation and animation technology tutorials and insights",
-    url: "https://www..vibevoices.net /blog",
+    url: "https://www.vibevoices.net/blog",
     publisher: {
       "@type": "Organization",
       name: "Midjourney Video Generator",
