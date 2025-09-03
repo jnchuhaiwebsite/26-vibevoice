@@ -17,3 +17,7 @@
         
     </section>
 </template>
+
+<script setup>  
+import VibeVoiceGenerator from './Generator.vue';
+</script>
