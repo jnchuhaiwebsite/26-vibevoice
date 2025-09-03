@@ -25,7 +25,7 @@ export default defineNuxtConfig({
   ],
   app: {
     head: {
-      title: 'MuseSteamer AI',
+      title: 'VibeVoice - Best TTS for Long-Form Multi-Speaker Audio',
       htmlAttrs: {
         lang: 'en' // 设置 HTML 语言
       },
@@ -103,22 +103,22 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'description',
-          content: 'Discover Nano Banana AI for fast, seamless image creation and editing. Simple to use, versatile styles, and perfect for creators, designers, and businesses.'
+          content: 'VibeVoice - Best TTS for Long-Form Multi-Speaker Audio. Microsoft VibeVoice delivers long-form, multi-speaker, conversational TTS with natural flow and cross-language support.'
         },
         // Open Graph / Facebook
         { property: 'og:type', content: 'website' },
-        { property: 'og:title', content: 'MuseSteamer AI Video Generator | Edit & Create Instantly' },
-        { property: 'og:description', content: 'Discover MuseSteamer AI for fast, seamless video creation and editing. Simple to use, versatile styles, and perfect for creators, designers, and businesses.' },
-        { property: 'og:image', content: '/favicon.ico' },
+        { property: 'og:title', content: 'VibeVoice - Best TTS for Long-Form Multi-Speaker Audio' },
+        { property: 'og:description', content: 'Microsoft VibeVoice delivers long-form, multi-speaker, conversational TTS with natural flow and cross-language support.' },
+        { property: 'og:image', content: 'https://www.vibevoices.net/favicon.ico' },
         // Twitter
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'MuseSteamer AI Video Generator | Edit & Create Instantly' },
-        { name: 'twitter:description', content: 'Discover MuseSteamer AI for fast, seamless video creation and editing. Simple to use, versatile styles, and perfect for creators, designers, and businesses.' },
-        { name: 'twitter:image', content: '/favicon.ico' },
+        { name: 'twitter:title', content: 'VibeVoice - Best TTS for Long-Form Multi-Speaker Audio' },
+        { name: 'twitter:description', content: 'Microsoft VibeVoice delivers long-form, multi-speaker, conversational TTS with natural flow and cross-language support.' },
+        { name: 'twitter:image', content: 'https://www.vibevoices.net/favicon.ico' },
         // Keywords
-        { name: 'keywords', content: 'OmniHuman 1.5, OmniHuman, OmniHuman 1.5 Demo, OmniHuman 1.5 Showcase, OmniHuman 1.5 Features, OmniHuman 1.5 Use Cases, OmniHuman 1.5 Pricing, OmniHuman 1.5 FAQ' },
-        { name: 'author', content: 'MuseSteamer Team' },
-        { name: 'application-name', content: 'MuseSteamer AI Video Generator' },
+        { name: 'keywords', content: 'VibeVoice, TTS, Text-to-Speech, AI Voice, Microsoft, Long-form Audio, Multi-speaker, Conversational TTS, Natural Voice, Cross-language' },
+        { name: 'author', content: 'VibeVoice Team' },
+        { name: 'application-name', content: 'VibeVoice TTS' },
       ],
       script: [
         { src: '/js/c6h.js', async: true } 
