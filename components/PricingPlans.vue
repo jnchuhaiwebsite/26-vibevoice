@@ -97,9 +97,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { getSubPlans, payOrder } from "~/api/index";
 import { useClerkAuth } from '~/utils/authHelper';
+import { useUserStore } from '~/stores/user';
+import { useUiStore } from '~/stores/ui';
+import { useRouter } from 'vue-router';
+import { useNuxtApp } from 'nuxt/app';
 
 import { useAsyncData } from 'nuxt/app';
 // 引入auth认证
@@ -107,8 +111,17 @@ const {
   isSignedIn
 } = useClerkAuth();
 
+// 引入stores和工具
+const userStore = useUserStore();
+const uiStore = useUiStore();
+const router = useRouter();
+const { $toast } = useNuxtApp() as any;
+
 // 用户状态
 const upgradingPlanId = ref<string | null>(null);
+
+// 获取用户信息
+const userInfo = computed(() => userStore.userInfo);
 
 // 使用useAsyncData获取套餐数据
 const { data, pending } = await useAsyncData('pricingPlans'+Math.random(), async () => {
@@ -144,34 +157,78 @@ const getButtonClass = (plan: any): string => {
   }
 };
 
-// Handle plan upgrade
+// 统一的登录检查方法 - 参考MuseSteamer Hero组件
+const withLoginCheck = async (callback?: () => void | Promise<void>) => {
+  const isLoggedIn = await checkLoginStatus();
+  if (isLoggedIn && callback) {
+    await callback();
+  }
+};
+
+// 检查登录状态 - 参考MuseSteamer Hero组件
+const checkLoginStatus = async () => {
+  if (!userInfo.value) {
+    uiStore.showLoginPrompt(); // 调用全局登录弹窗
+    $toast.info('Please login to continue with your purchase.');
+    return false;
+  }
+  return true;
+};
+
+// 检查用户积分状态 - 参考MuseSteamer Hero组件
+const checkUserCredits = () => {
+  const remainingCredits = (userInfo.value?.free_limit ?? 0) + (userInfo.value?.remaining_limit ?? 0);
+  if (remainingCredits <= 0) {
+    $toast.info('Your credits are running low. Consider upgrading your plan for more credits.');
+    return false;
+  }
+  return true;
+};
+
+// 验证套餐选择 - 参考MuseSteamer Hero组件的输入验证
+const validatePlanSelection = (plan: any) => {
+  if (!plan || !plan.code) {
+    $toast.error('Invalid plan selected. Please try again.');
+    return false;
+  }
+  
+  if (plan.price <= 0) {
+    $toast.info('This is a free plan. You can use it without payment.');
+    return true;
+  }
+  
+  return true;
+};
+
+// Handle plan upgrade - 改进的验证机制
 const handleUpgradePlan = async (plan: any) => {
-  // 如果没有登录，则提示登录并触发登录
-  if (!isSignedIn.value) {
-    try {
-      const loginBtn = document.querySelector('#bindLogin') as HTMLElement;
-      if (loginBtn) {
-        loginBtn.click();
-      }
-    } catch (error) {
-      console.error("Failed to find login:", error);
-    }
+  // 1. 验证套餐选择
+  if (!validatePlanSelection(plan)) {
     return;
   }
 
-  upgradingPlanId.value = plan.code;
-  try {
-    const response = (await payOrder({ price_id: plan.code })) as any;
-    if (response.code === 200 && response.data?.url) {
-      window.location.href = response.data.url;
-    } else {
-      throw new Error(response.msg || "Failed to create payment order");
+  // 2. 登录检查
+  await withLoginCheck(async () => {
+    // 3. 检查用户积分状态（可选，用于提示）
+    checkUserCredits();
+
+    // 4. 开始支付流程
+    upgradingPlanId.value = plan.code;
+    try {
+      const response = (await payOrder({ price_id: plan.code })) as any;
+      if (response.code === 200 && response.data?.url) {
+        $toast.success('Redirecting to payment...');
+        window.location.href = response.data.url;
+      } else {
+        throw new Error(response.msg || "Failed to create payment order");
+      }
+    } catch (error: any) {
+      console.error("Payment failed:", error);
+      $toast.error(error.message || 'Payment failed. Please try again.');
+    } finally {
+      upgradingPlanId.value = null;
     }
-  } catch (error) {
-    console.error("Payment failed:", error);
-  } finally {
-    upgradingPlanId.value = null;
-  }
+  });
 };
 </script>
 
