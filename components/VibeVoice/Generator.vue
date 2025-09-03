@@ -540,7 +540,7 @@ const checkUsageLimit = () => {
   if (remainingCredits <= requiredCredits) {
     // $toast.info(`Not enough credits. This action requires ${requiredCredits} credits.`);
     $toast.info(`Please upgrade to premium for more credits.`);
-    router.push('#pricing');
+    router.push('/pricing');
     return false;
   }
   return true;
