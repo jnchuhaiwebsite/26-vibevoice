@@ -1,28 +1,26 @@
 <template>
-  <div class="min-h-screen" style="background-color: var(--bg-color); color: var(--text-color);">
-    <main class="w-full mx-auto rounded-lg max-w-7xl min-h-screen">
-      <!-- Page Title Area -->
-      <section>
-        <div class="container mx-auto px-4">
-          <PageHero 
-            class="mt-20 mb-16"
-            title="MuseSteamer AI Pricing"
-            subtitle="Unlock the full power of MuseSteamer with a plan that scales with your ambition. No hidden fees, your credits never expire."
-          />
-        </div>
-      </section>
+  <section class="min-h-screen bg-[#0B0B12] text-white relative overflow-hidden pt-48">
+    <div class="aurora-background"></div>
+    <div class="container mx-auto px-6 relative z-10 pt-48">
+      <h1 class="text-5xl md:text-5xl leading-tight tracking-tighter text-white text-center">
+        VibeVoice Pricing
+      </h1>
+      <p class="mt-6 text-xl text-[#D1D5DB] max-w-3xl mx-auto text-center mb-12">
+        Plans designed to fuel your creativity, from your first word to your global broadcast. Find the perfect fit and start creating today.
+      </p>
+
 
       <!-- Loading State -->
-      <section v-if="pending" class="flex justify-center items-center py-20 w-full" aria-live="polite">
+      <div v-if="pending" class="flex justify-center items-center py-20 w-full" aria-live="polite">
         <div
           class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2"
           style="border-color: #6209F6;"
           aria-label="Loading pricing plans"
         ></div>
-      </section>
+      </div>
 
-      <!-- Pricing Plans Section -->
-      <section
+      <!-- Pricing Plans -->
+      <div
         v-else
         class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto place-items-stretch"
         aria-label="Pricing plans"
@@ -32,49 +30,47 @@
           v-for="(plan, index) in planData"
           :key="index"
           :class="[
-            'relative rounded-xl p-6 flex flex-col h-full',
+            'relative rounded-xl p-6 flex flex-col h-full card-glow',
             plan.is_popular
               ? 'border-2 shadow-2xl scale-105 z-10'
               : 'border shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300',
             plan.price === 0 ? 'hidden md:flex' : 'flex'
           ]"
           :style="{
-            backgroundColor: 'var(--card-color)',
-            borderColor: plan.is_popular ? '#DC8AF6' : 'var(--border-color)'
+            backgroundColor: '#1F2937',
+            borderColor: plan.is_popular ? '#2563EB' : '#1F2937'
           }"
           :aria-labelledby="`plan-${index}-title`"
         >
           <!-- Popular Tag -->
           <div
             v-if="plan.is_popular"
-            class="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-2 text-sm font-semibold rounded-full z-20 shadow-lg"
-            style="background: var(--primary-gradient); color: white;"
+            class="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-2 text-sm font-semibold rounded-full z-20 shadow-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white"
             aria-label="Most popular plan"
           >
             ⭐ Most Popular
           </div>
 
           <!-- Plan Title -->
-          <header class="text-center mb-6">
+          <div class="text-center mb-6">
             <h3 
               :id="`plan-${index}-title`"
-              class="text-2xl font-bold mb-3"
-              style="color: var(--text-color);"
+              class="text-2xl font-bold mb-3 text-white"
             >
               {{ plan.name }}
             </h3>
-            <p class="text-sm leading-relaxed" style="color: var(--text-muted-color);" v-html="plan.description"></p>
-          </header>
+            <p class="text-sm leading-relaxed text-[#D1D5DB]" v-html="plan.description"></p>
+          </div>
 
           <!-- Price Info -->
           <div class="mb-6 text-center">
-            <div class="rounded-xl p-6 border shadow-sm" style="background-color: var(--bg-color); border-color: var(--border-color);">
+            <div class="rounded-xl p-6 border shadow-sm bg-gradient-to-br from-gray-800 to-gray-900 border-white/10">
               <div class="inline-flex items-baseline gap-2">
-                <span class="text-4xl font-bold" style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${{ plan.price }}</span>
-                <span v-if="plan.price === 9.9" class="text-xl line-through" style="color: var(--text-muted-color);">$12</span>
-                <span v-if="plan.price === 29.9" class="text-xl line-through" style="color: var(--text-muted-color);">$33</span>
-                <span v-if="plan.price === 69.9" class="text-xl line-through" style="color: var(--text-muted-color);">$74</span>
-                <span class="text-sm font-medium px-3 py-1 rounded-full shadow-sm" style="background-color: var(--card-color); color: var(--text-muted-color);">one-time</span>
+                <span class="text-4xl font-bold text-white">${{ plan.price }}</span>
+                <span v-if="plan.price === 9.9" class="text-xl line-through text-[#2563EB]/50">$12</span>
+                <span v-if="plan.price === 29.9" class="text-xl line-through text-[#2563EB]/50">$33</span>
+                <span v-if="plan.price === 79.9" class="text-xl line-through text-[#2563EB]/50">$86</span>
+                <span class="text-sm font-medium px-3 py-1 rounded-full shadow-sm bg-gray-800/80 text-white/50">one-time</span>
               </div>
             </div>
           </div>
@@ -96,57 +92,56 @@
           </div>
 
           <!-- Features List -->
-          <section class="flex-grow" :aria-label="`${plan.name} plan features`">
+          <div class="flex-grow" :aria-label="`${plan.name} plan features`">
             <ul class="space-y-4">
               <li
                 v-for="(feature, fIndex) in getPlanFeatures(plan)"
                 :key="fIndex"
-                class="flex items-start"
-                style="color: var(--text-muted-color);"
+                class="flex items-start text-[#D1D5DB]"
               >
-                <span class="mr-3 font-bold text-lg flex-shrink-0 mt-0.5" style="color: #83D0FB;" aria-hidden="true">✓</span>
+                <span class="mr-3 font-bold text-lg flex-shrink-0 mt-0.5 text-[#2563EB]" aria-hidden="true">✓</span>
                 <span class="text-sm leading-relaxed" v-html="feature"></span>
               </li>
             </ul>
-          </section>
+          </div>
         </article>
-      </section>
+      </div>
 
-      <!-- How Credits Work Section -->
-      <section class="mt-20 py-12 rounded-xl border shadow-lg" style="background-color: var(--card-color); border-color: var(--border-color);">
+      <!-- How Credits Work -->
+      <!-- <div class="mt-20 py-12 rounded-xl border shadow-lg bg-[#1F2937] border-[#1F2937]">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold sm:text-4xl" style="color: var(--text-color);">How Do Credits Work?</h2>
-            <p class="mt-4 text-lg" style="color: var(--text-muted-color);">
-              Credits are the universal currency for creating in MuseSteamer AI. Use them for various actions like generating images or accessing advanced features. Your credit balance is deducted based on your usage.
+            <h2 class="text-3xl font-bold sm:text-4xl text-white">How Do Credits Work?</h2>
+            <p class="mt-4 text-lg text-[#D1D5DB]">
+              Credits are the universal currency for creating with VibeVoice. Use them for various actions like generating podcasts or accessing advanced features. Your credit balance is deducted based on your usage.
             </p>
-            <div class="mt-6 inline-block px-4 py-2 rounded-lg border" style="background-color: var(--bg-color); border-color: var(--border-color);">
-              <p class="text-base font-medium" style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Example: 1 Standard Image Generation = 1 Credit.</p>
+            <div class="mt-6 inline-block px-4 py-2 rounded-lg border bg-[#0B0B12] border-[#1F2937]">
+              <p class="text-base font-medium text-white">Example: 1 Standard Podcast Generation = 1 Credit.</p>
             </div>
           </div>
         </div>
-      </section>
+      </div> -->
 
-      <!-- FAQ Section -->
-      <section class="mt-16 py-12">
+      <!-- FAQ -->
+      <div class="mt-16 py-12">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold sm:text-4xl" style="color: var(--text-color);">Frequently Asked Questions</h2>
+            <h2 class="text-3xl font-bold sm:text-4xl text-white">Frequently Asked Questions</h2>
           </div>
           <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
-            <div v-for="(faq, index) in faqs" :key="index" class="rounded-lg p-6 border transition-all duration-300" style="background-color: var(--card-color); border-color: var(--border-color);">
-              <h3 class="font-semibold text-lg flex items-start" style="color: var(--text-color);">
-                <span class="font-bold mr-3" style="color: #83D0FB;">{{ String(index + 1).padStart(2, '0') }}</span>
+            <div v-for="(faq, index) in faqs" :key="index" class="rounded-lg p-6 border transition-all duration-300 bg-[#1F2937] border-[#1F2937] card-glow">
+              <h3 class="font-semibold text-lg flex items-start text-white">
+                <span class="font-bold mr-3 text-[#2563EB]">{{ String(index + 1).padStart(2, '0') }}</span>
                 <span>{{ faq.question }}</span>
               </h3>
-              <p class="mt-4 pl-8" style="color: var(--text-muted-color);">{{ faq.answer }}</p>
+              <p class="mt-4 pl-8 text-[#D1D5DB]">{{ faq.answer }}</p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
       
-    </main>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -169,7 +164,7 @@ const faqs = ref([
   },
   {
     question: 'How are credits consumed?',
-    answer: 'A standard image generation consumes one credit. We may introduce more advanced features in the future, like ultra-high-resolution upscaling, which might have different credit costs. The cost of any action will be clearly displayed before you confirm it.'
+    answer: 'Every credit puts our powerful voice engine to work for you, with costs calculated simply by the number of characters in your text.'
   },
   {
     question: 'What if I run out of credits?',
@@ -198,8 +193,8 @@ interface PricingPlan {
 
 // 设置SEO
 useSeo({
-  title: 'Nano Banana AI Image Editing Plans',
-  description: 'Explore simple Nano Banana pricing. Get unlimited AI image editing and find the plan that fits you best.',
+  title: 'Pricing Plan - VibeVoice',
+  description: 'Try VibeVoice model for multi-speaker, long-form, high-quality conversational TTS.',
 });
 
 // 引入auth认证
@@ -247,9 +242,9 @@ const getPlanFeatures = (plan: PricingPlan): string[] => {
   // Get button class
 const getButtonClass = (plan: PricingPlan): string => {
   if (plan.is_popular) {
-    return "btn-primary";
+    return "bg-[#2563EB] hover:bg-[#1D4ED8] text-white";
   } else {
-    return "btn-secondary"; // Assuming you might have a secondary button style
+    return "btn-secondary bg-[#2563EB]/50";
   }
 };
 
@@ -285,11 +280,12 @@ const handleUpgradePlan = async (plan: PricingPlan) => {
 </script>
 <style>
 .btn-secondary {
-  background-color: var(--card-color);
-  color: var(--text-color);
-  border: 1px solid var(--border-color);
+  /* background-color: #1F2937; */
+  color: white;
+  border: 1px solid #1F2937;
 }
 .btn-secondary:hover {
-  border-color: #83D0FB;
+  border-color: #2563EB;
+  background-color: #2563EB;
 }
 </style> 

@@ -32,7 +32,7 @@ export const urlList = {
 
   createTasksVideo: baseUrl + '/api/task/steamer/create', // 创建任务-视频
   checkTask: baseUrl + '/api/task/falai/vibevoice/check_task_status', // 检查任务
-  createTaskVibeVoice: baseUrl + '/api/task/falai/vibevoice', // 创建任务-生成播客
+  createTaskVibeVoice: baseUrl + '/api/task/falai/vibevoice/create', // 创建任务-生成播客
 }
 
 /**
