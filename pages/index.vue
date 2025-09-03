@@ -6,6 +6,7 @@
             <VibeVoiceInteractiveShowcase />
             <VibeVoiceTechnology />
             <VibeVoiceUseCases />
+            <CommentSection />
             <!-- <PricingPlans /> -->
             <VibeVoiceFaq />
             <!-- <VibeVoiceCallToAction /> -->
@@ -22,23 +23,12 @@ import VibeVoiceUseCases from '~/components/VibeVoice/UseCases.vue';
 import VibeVoiceFaq from '~/components/VibeVoice/Faq.vue';
 import VibeVoiceCallToAction from '~/components/VibeVoice/CallToAction.vue';
 import VibeVoiceFooter from '~/components/VibeVoice/Footer.vue';
+import CommentSection from '~/components/Comments/CommentSection.vue';
+import { useSeo } from '~/composables/useSeo';
 
-useHead({
+useSeo({
     title: 'VibeVoice - Best TTS for Long-Form Multi-Speaker Audio',
-    meta: [
-        { name: 'description', content: 'Microsoft VibeVoice delivers long-form, multi-speaker, conversational TTS with natural flow and cross-language support.' }
-    ],
-    link: [
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
-        { href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap', rel: 'stylesheet' }
-    ],
-    htmlAttrs: {
-      lang: 'en'
-    },
-    bodyAttrs: {
-      class: 'overflow-x-hidden'
-    }
+    description: 'Microsoft VibeVoice delivers long-form, multi-speaker, conversational TTS with natural flow and cross-language support.',
 });
 
 onMounted(() => {
