@@ -537,9 +537,10 @@ const checkUsageLimit = () => {
   const remainingCredits = (userInfo.value?.free_limit ?? 0) + (userInfo.value?.remaining_limit ?? 0);
   // VibeVoice生成消耗的积分（可以根据实际情况调整）
   const requiredCredits = 1; // 假设生成一次消耗1积分
-  if (remainingCredits < requiredCredits) {
-    $toast.info(`Not enough credits. This action requires ${requiredCredits} credits.`);
-    router.push('/pricing');
+  if (remainingCredits <= requiredCredits) {
+    // $toast.info(`Not enough credits. This action requires ${requiredCredits} credits.`);
+    $toast.info(`Please upgrade to premium for more credits.`);
+    router.push('#pricing');
     return false;
   }
   return true;
