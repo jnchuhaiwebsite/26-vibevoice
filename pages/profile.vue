@@ -234,24 +234,20 @@
         </button>
       </div>
       
-      <!-- 音频列表布局 -->
-      <div class="space-y-4" v-if="works.length > 0">
+      <!-- 音频网格布局 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" v-if="works.length > 0">
         <div v-for="work in works" :key="work.task_id" class="bg-[#111827] rounded-xl border border-[#1F2937] p-6 hover:border-[#2563EB] transition-all duration-300">
-          <div class="flex items-center gap-4">
-            <!-- 音频图标 -->
-            <div class="flex-shrink-0">
-              <div class="w-16 h-16 bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] rounded-lg flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                </svg>
-              </div>
+          <!-- 音频图标和标题 -->
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              </svg>
             </div>
-            
-            <!-- 音频信息 -->
             <div class="flex-1 min-w-0">
-              <div class="flex items-center gap-2 mb-2">
-                <h4 class="text-lg font-semibold text-white truncate">{{ work.task_id }}</h4>
+              <h4 class="text-lg font-semibold text-white truncate">{{ work.task_id }}</h4>
+              <div class="flex items-center gap-2 mt-1">
                 <span v-if="work.status === 1" class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full border border-green-500/30">
                   Completed
                 </span>
@@ -259,37 +255,38 @@
                   Processing
                 </span>
               </div>
-              
-              <!-- 音频播放器 -->
-              <div v-if="work.status === 1 && work.quality_image" class="mb-3">
-                <audio 
-                  :src="work.quality_image" 
-                  controls 
-                  class="w-full h-10 rounded-lg"
-                  preload="metadata"
-                >
-                  Your browser does not support the audio element.
-                </audio>
-              </div>
-              
-              <!-- 提示词 -->
-              <div v-if="work.prompt" class="text-[#D1D5DB] text-sm mb-2 line-clamp-2">
-                <span class="font-medium" v-html="work.prompt.replace(/\n/g, '<br>')"></span> 
-              </div>
-              
-              <!-- 创建时间 -->
-              <p class="text-[#9CA3AF] text-xs">{{ formatDate(work.created_at) }}</p>
             </div>
+          </div>
+          
+          <!-- 音频播放器 -->
+          <div v-if="work.status === 1 && work.quality_image" class="mb-4">
+            <audio 
+              :src="work.quality_image" 
+              controls 
+              class="w-full h-10 rounded-lg"
+              preload="metadata"
+            >
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+          
+          <!-- 提示词 -->
+          <div v-if="work.prompt" class="text-[#D1D5DB] text-sm mb-4 line-clamp-3">
+            <span class="font-medium" v-html="work.prompt.replace(/\n/g, '<br>')"></span> 
+          </div>
+          
+          <!-- 创建时间和操作按钮 -->
+          <div class="flex items-center justify-between">
+            <p class="text-[#9CA3AF] text-xs">{{ formatDate(work.created_at) }}</p>
             
-            <!-- 操作按钮 -->
-            <div class="flex-shrink-0 flex items-center gap-2">
+            <div class="flex items-center gap-2">
               <button 
                 v-if="work.prompt"
                 @click="copyPrompt(work.prompt)"
                 class="p-2 text-[#D1D5DB] hover:text-white transition-colors rounded-lg hover:bg-[#1F2937]"
                 title="Copy prompt"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                   <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                 </svg>
@@ -302,12 +299,12 @@
                 :disabled="isDownloading"
                 title="Download audio"
               >
-                <svg v-if="!isDownloading" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg v-if="!isDownloading" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                   <polyline points="7 10 12 15 17 10"/>
                   <line x1="12" y1="15" x2="12" y2="3"/>
                 </svg>
-                <div v-else class="w-5 h-5 border-2 border-[#D1D5DB] border-t-transparent rounded-full animate-spin"></div>
+                <div v-else class="w-4 h-4 border-2 border-[#D1D5DB] border-t-transparent rounded-full animate-spin"></div>
               </button>
             </div>
           </div>
@@ -342,10 +339,10 @@
             @change="handleWorksPageSizeChange(Number(pageSize))"
             class="bg-[#1F2937] text-[#D1D5DB] rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#2563EB] border border-[#374151]"
           >
-            <option value="8">8</option>
-            <option value="16">16</option>
+            <option value="6">6</option>
+            <option value="12">12</option>
+            <option value="18">18</option>
             <option value="24">24</option>
-            <option value="32">32</option>
           </select>
           <span class="text-[#D1D5DB] text-sm">entries</span>
         </div>
@@ -507,7 +504,7 @@ const worksCount = ref(0)
 const loading = ref(true)
 const hasMore = ref(true)
 const page = ref(1)
-const pageSize = ref(8)
+const pageSize = ref(6)
 const totalWorksPages = ref(1)
 
 // 视频加载状态
