@@ -137,7 +137,7 @@
       <!-- 示例展示 -->
       <div v-if="!generatedAudio" class="bg-[#111827] rounded-2xl border border-[#1F2937] shadow-2xl shadow-black/50 overflow-hidden flex-1 flex flex-col">
         <div class="p-6 border-b border-[#1F2937]">
-          <!-- <h3 class="text-xl font-bold text-white mb-2">VibeVoice Case Study: An Emotional Conversation</h3> -->
+          <span class="text-xl font-bold text-white mb-2">VibeVoice Case Study: An Emotional Conversation</span>
           <audio 
             ref="audioPlayerRef" 
             id="showcase-audio" 
