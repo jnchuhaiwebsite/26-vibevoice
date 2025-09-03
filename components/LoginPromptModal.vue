@@ -7,31 +7,33 @@
     leave-from-class="opacity-100"
     leave-to-class="opacity-0"
   >
-    <div v-if="uiStore.isLoginPromptVisible" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4" @click="uiStore.hideLoginPrompt()">
-      <div class="bg-gray-800 rounded-2xl shadow-2xl w-full max-w-sm m-4 p-8 text-center transform transition-all border border-gray-700/50"
+    <div v-if="uiStore.isLoginPromptVisible" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4" @click="uiStore.hideLoginPrompt()">
+      <div class="relative bg-[#111827] rounded-2xl shadow-2xl w-full max-w-sm m-4 p-8 text-center transform transition-all border border-[#1F2937] overflow-hidden"
            @click.stop
       >
-        <div class="flex flex-col items-center mb-4">
-          <div class="p-3 rounded-full bg-gradient-to-r from-[#6209F6]/20 to-[#00b8ff]/20 mb-4 ring-2 ring-gray-700">
-            <svg class="w-8 h-8 text-gradient-to-r from-[#6209F6] via-[#DC8AF6] to-[#83D0FB]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+        <!-- Aurora background effect -->
+        <div class="aurora-background"></div>
+        <div class="flex flex-col items-center mb-4 relative z-10">
+          <div class="p-3 rounded-full bg-gradient-to-r from-[#2563EB]/20 to-[#1D4ED8]/20 mb-4 ring-2 ring-[#1F2937]">
+            <svg class="w-8 h-8 text-[#2563EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
             </svg>
           </div>
-          <h2 class="text-2xl font-bold text-gray-200 mb-2">Log In to Continue</h2>
-          <p class="text-gray-400 text-sm">
-            Please log in or create an account to generate videos and access all features.
+          <h2 class="text-2xl font-bold text-white mb-2">Log In to Continue</h2>
+          <p class="text-[#D1D5DB] text-sm">
+            Please log in or create an account to generate podcasts and access all VibeVoice features.
           </p>
         </div>
-        <div class="flex flex-col gap-4 mt-8">
+        <div class="flex flex-col gap-4 mt-8 relative z-10">
           <button
             @click="handleLogin"
-            class="w-full py-3 px-4  bg-gradient-to-r from-[#6209F6] via-[#DC8AF6] to-[#83D0FB] hover:to-[#6209F6]/70 text-white font-bold rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#6209F6] focus:ring-offset-2 focus:ring-offset-gray-800"
+            class="w-full py-3 px-4 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold rounded-lg shadow-lg shadow-blue-500/20 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:ring-offset-2 focus:ring-offset-[#111827]"
           >
             Log In / Sign Up
           </button>
           <button
             @click="uiStore.hideLoginPrompt()"
-            class="w-full py-3 px-4 bg-gray-700/50 hover:bg-gray-700/80 text-gray-300 font-medium rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#6209F6] focus:ring-offset-2 focus:ring-offset-gray-800 border border-gray-600"
+            class="w-full py-3 px-4 bg-[#1F2937] hover:bg-[#374151] text-[#D1D5DB] font-medium rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:ring-offset-2 focus:ring-offset-[#111827] border border-[#374151]"
           >
             Cancel
           </button>

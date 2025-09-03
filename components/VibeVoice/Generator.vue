@@ -30,6 +30,7 @@
             isFullscreen ? 'h-[80vh]' : 'h-48'
           ]"
           :placeholder="placeholderText"
+          @focus="withLoginCheck()"
         ></textarea>
       </div>
 
@@ -115,7 +116,7 @@
         🎲 Random Prompt
         </button>
         <button 
-          @click="generatePodcast" 
+          @click="handleGenerateClick" 
           :disabled="loading || !script.trim()" 
           class="flex-1 relative flex items-center justify-center gap-2 px-6 py-4 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-lg rounded-lg transition-colors duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
         >
@@ -239,6 +240,7 @@
           id="fullscreen-script"
           class="w-full h-[calc(100vh-200px)] rounded-xl bg-gradient-to-b from-gray-900 to-gray-800 border border-gray-700 text-gray-200 px-4 py-3 focus:ring-2 focus:ring-[#00ffd1] focus:border-transparent transition placeholder-gray-500 text-base resize-none"
           :placeholder="placeholderText"
+          @focus="withLoginCheck()"
         ></textarea>
         <div class="flex justify-end mt-4 space-x-4">
           <button 
@@ -263,8 +265,21 @@
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
 import { useNuxtApp } from 'nuxt/app';
 import { createTaskVibeVoice, checkTask } from '~/api';
+import { useUserStore } from '~/stores/user';
+import { useUiStore } from '~/stores/ui';
+import { useRouter } from 'vue-router';
+import { useClerkAuth } from '~/utils/authHelper';
 
 const { $toast } = useNuxtApp() as any;
+
+// 引入stores和工具
+const userStore = useUserStore();
+const uiStore = useUiStore();
+const router = useRouter();
+const { isSignedIn } = useClerkAuth();
+
+// 获取用户信息
+const userInfo = computed(() => userStore.userInfo);
 
 const voiceOptions = [
   'Alice [EN]',
@@ -499,6 +514,78 @@ const resetPreview = () => {
   generatedAudio.value = '';
 };
 
+// 统一的登录检查方法 - 参考MuseSteamer Hero组件
+const withLoginCheck = async (callback?: () => void | Promise<void>) => {
+  const isLoggedIn = await checkLoginStatus();
+  if (isLoggedIn && callback) {
+    await callback();
+  }
+};
+
+// 检查登录状态 - 参考MuseSteamer Hero组件
+const checkLoginStatus = async () => {
+  if (!userInfo.value) {
+    uiStore.showLoginPrompt(); // 调用全局登录弹窗
+    // $toast.info('Please login to generate your podcast.');
+    return false;
+  }
+  return true;
+};
+
+// 检查用户积分状态 - 参考MuseSteamer Hero组件
+const checkUsageLimit = () => {
+  const remainingCredits = (userInfo.value?.free_limit ?? 0) + (userInfo.value?.remaining_limit ?? 0);
+  // VibeVoice生成消耗的积分（可以根据实际情况调整）
+  const requiredCredits = 1; // 假设生成一次消耗1积分
+  if (remainingCredits < requiredCredits) {
+    $toast.info(`Not enough credits. This action requires ${requiredCredits} credits.`);
+    router.push('/pricing');
+    return false;
+  }
+  return true;
+};
+
+// 验证脚本输入 - 参考MuseSteamer Hero组件的输入验证
+const validateScriptInput = () => {
+  if (!script.value.trim()) {
+    $toast.error('Please enter a podcast script.');
+    return false;
+  }
+  
+  // 检查脚本长度
+  if (script.value.trim().length < 10) {
+    $toast.error('Script is too short. Please enter at least 10 characters.');
+    return false;
+  }
+  
+  // 检查是否包含Speaker格式
+  const speakerMatches = script.value.match(/Speaker\s+\d+:/g);
+  if (!speakerMatches || speakerMatches.length < 2) {
+    $toast.error('Please include at least 2 speakers in your script (e.g., "Speaker 0:", "Speaker 1:").');
+    return false;
+  }
+  
+  return true;
+};
+
+// 验证扬声器配置
+const validateSpeakerConfiguration = () => {
+  if (speakers.value.length < 1) {
+    $toast.error('Please configure at least one speaker.');
+    return false;
+  }
+  
+  // 检查每个扬声器是否都选择了语音
+  for (let i = 0; i < speakers.value.length; i++) {
+    if (!speakers.value[i].voice) {
+      $toast.error(`Please select a voice for Speaker ${i}.`);
+      return false;
+    }
+  }
+  
+  return true;
+};
+
 const randomPrompt = () => {
   // 设置对话人数为 2 人
   if (speakers.value.length !== 2) {
@@ -532,12 +619,30 @@ Speaker 1: Well, I think we're seeing some fascinating changes in the industry r
   script.value = randomScript;
 };
 
+// 点击生成按钮的入口函数 - 参考MuseSteamer Hero组件
+const handleGenerateClick = () => {
+  withLoginCheck(() => {
+    // 1. 验证脚本输入
+    if (!validateScriptInput()) {
+      return;
+    }
+    
+    // 2. 验证扬声器配置
+    if (!validateSpeakerConfiguration()) {
+      return;
+    }
+    
+    // 3. 检查积分
+    if (!checkUsageLimit()) {
+      return;
+    }
+    
+    // 4. 开始生成
+    generatePodcast();
+  });
+};
+
 const generatePodcast = async () => {
-  if (!script.value.trim()) {
-    $toast.error('Please enter a podcast script');
-    return;
-  }
-  
   loading.value = true;
   taskStatus.value = 'Creating task...';
   
@@ -563,10 +668,11 @@ const generatePodcast = async () => {
     const taskId = createResponse.data.task_id;
     taskStatus.value = 'Task created, generating podcast...';
     
+    // 刷新用户信息（积分）
+    await userStore.fetchUserInfo(true);
+    
     // 开始轮询检查任务状态
     await pollTaskStatus(taskId);
-    
-
     
   } catch (error: any) {
     $toast.error('Failed to generate podcast: ' + (error.message || error));
