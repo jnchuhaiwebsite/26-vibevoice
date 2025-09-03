@@ -40,7 +40,7 @@
               The open-source future of voice. Use responsibly. Do not generate harmful or misleading content.
             </p>
             <div class="text-sm">
-              <p>© 2024 VibeVoice Project. All rights reserved.</p>
+              <p>© 2025 VibeVoice Project. All rights reserved.</p>
               <p>
                 <a href="mailto:support@vibeVoices.net" class="footer-link" title="Email">support@vibeVoices.net</a>
               </p>
