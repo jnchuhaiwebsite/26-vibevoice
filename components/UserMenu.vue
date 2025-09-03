@@ -118,7 +118,7 @@
         <button id="bindLogin"
           :disabled="isAuthLoading"
           class="px-4 py-2 rounded-lg text-white hover:opacity-90 transition-all text-sm font-medium disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center shadow-md hover:shadow-lg"
-          style="background: var(--primary-gradient);"
+          style="background: #2563EB;"
         >
           {{ isAuthLoading ? 'Loading...' : 'Log in / Sign up' }}
         </button>
@@ -166,9 +166,9 @@
           to="/profile"
           @click="props.onCloseMobileNav?.()"
           class="block w-full py-3 px-4 rounded-xl active:scale-[0.98] transition-all duration-200 text-sm font-medium flex items-center gap-3 shadow-sm border"
-          style="background-color: var(--card-color); border-color: var(--border-color); color: var(--text-color);"
+          style="background-color: #111827; border-color: #1F2937; color: #D1D5DB;"
         >
-          <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: var(--border-color);">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #1F2937;">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" style="color: #83D0FB;">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
@@ -177,9 +177,9 @@
         </NuxtLink>
 
         <!-- 我的积分 -->
-        <div class="w-full py-3 px-4 rounded-xl border text-sm font-medium flex items-center justify-between shadow-sm" style="background-color: var(--card-color); border-color: var(--border-color); color: var(--text-color);">
+        <div class="w-full py-3 px-4 rounded-xl border text-sm font-medium flex items-center justify-between shadow-sm" style="background-color: #111827; border-color: #1F2937; color: #D1D5DB;">
           <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: var(--border-color);">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #1F2937;">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" style="color: #83D0FB;">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.171-.879-1.171-2.303 0-3.182C10.536 7.719 11.768 7.5 12 7.5c.725 0 1.45.22 2.003.659" />
               </svg>
@@ -195,7 +195,7 @@
         <button
           @click="() => console.log('👆 [UserMenu] 移动端退出按钮被点击')"
           class="mt-6 w-full py-3 px-4 flex items-center justify-center gap-3 rounded-xl active:scale-[0.98] transition-all duration-200 text-sm font-medium text-red-500 border shadow-sm"
-          style="background-color: var(--card-color); border-color: var(--border-color);"
+          style="background-color: #111827; border-color: #1F2937;"
         >
           <div class="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center">
             <!-- Heroicons: logout/arrow-right-on-rectangle -->
@@ -224,7 +224,7 @@
       <button id="bindLogin"
         :disabled="isAuthLoading"
         class="mt-6 w-full py-4 rounded-xl text-white hover:opacity-90 active:scale-[0.98] transition-all text-base font-semibold disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center shadow-lg hover:shadow-xl border"
-        style="background: var(--primary-gradient); border-color: rgba(255, 255, 255, 0.2);"
+        style="background: #2563EB; border-color: rgba(255, 255, 255, 0.2);"
       >
         <div v-if="!isAuthLoading" class="flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">

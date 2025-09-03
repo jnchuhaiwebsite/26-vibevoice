@@ -60,7 +60,7 @@
             </template> -->
             <!-- 用户头像区域 -->
             <div>
-              <!-- <UserMenu /> -->
+              <UserMenu />
             </div>
           </div>
 
@@ -150,7 +150,7 @@
             </div>
 
             <!-- 移动端用户菜单 -->
-            <!-- <UserMenu :isMobile="true" :onCloseMobileNav="() => isOpen = false" /> -->
+            <UserMenu :isMobile="true" :onCloseMobileNav="() => isOpen = false" />
           </div>
         </div>
       </Transition>

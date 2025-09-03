@@ -13,7 +13,7 @@ const baseUrl = process.env.NODE_ENV === 'development'
 // console.log('当前baseUrl:', baseUrl);
 // API接口URL列表
 export const urlList = {
-  setUserInfo: baseUrl + '/api/user/auth',        // 设置用户信息
+  setUserInfo: baseUrl +(process.env.NODE_ENV === 'development' ? '/api/user/auth' : '/api/user/login_auth'),        // 设置用户信息
   getCurrentUser: baseUrl + '/api/user/info',   // 获取当前用户信息
   getSubPlans: baseUrl + '/api/website/priceList',     // 获取套餐信息
   getSubplansTest: baseUrl + '/api/website/odl',     // 获取测试套餐信息
@@ -31,7 +31,8 @@ export const urlList = {
   blogList: baseUrl + '/api/cms/blogList', // 获取博客列表
 
   createTasksVideo: baseUrl + '/api/task/steamer/create', // 创建任务-视频
-  checkTask: baseUrl + '/api/task/steamer/check_task_status', // 检查任务
+  checkTask: baseUrl + '/api/task/falai/vibevoice/check_task_status', // 检查任务
+  createTaskVibeVoice: baseUrl + '/api/task/falai/vibevoice', // 创建任务-生成播客
 }
 
 /**
@@ -41,6 +42,7 @@ export const urlList = {
  */
 export const setUserInfo = async (data: any) => {
   try {
+
     // 如果已有有效Token，直接返回缓存的用户信息
     const token = getValidToken();
     if (token) {
@@ -149,16 +151,14 @@ export const createTasks = async (data: any) => {
 }
 
 /**
- * 创建任务-生成视频
- * @param prompt - 描述-必填
- * @param image_url - 图片上传
- * @param model - 模型-必填
- * @param duration - 时长-必填
- * @returns {Object} - 返回任务结果
+ * 
+ * 创建任务
+ * @param data 
+ * @returns 
  */
-export const createTaskTextVideo = async (data: any) => {
+export const checkTaskVibeVoice = async (data: any) => {
   try {
-    return await apiRequest(urlList.createTasksVideo, 'POST', data, true);
+    return await apiRequest(urlList.checkTaskVibeVoice, 'POST', data, true);
   } catch (error) {
     console.error('创建任务失败:', error);
     throw error;
@@ -224,6 +224,19 @@ export const getOpusList = async (data: any) => {
  */
 export const checkTask = async (task_id:string) => {
   return apiRequest(urlList.checkTask+'?task_id='+task_id, 'GET', undefined, true);
+}
+
+/**
+ * 创建VibeVoice播客任务
+ * @param data 播客生成数据
+ * @returns 任务创建结果
+ */   
+export const createTaskVibeVoice = async (data: {
+  script: string;
+  speakers: Array<{ preset: string }>;
+  cfg_scale: number;
+}) => {
+  return apiRequest(urlList.createTaskVibeVoice, 'POST', data, true);
 }
 
 /**
@@ -595,7 +608,14 @@ const apiRequest = async <T>(url: string, method: 'GET' | 'POST', data?: any, ne
     };
     
     if (data && method === 'POST') {
-      options.body = createFormData(data);
+      // 检查是否是 VibeVoice 相关的请求，使用 JSON 格式
+      if (url.includes('/api/task/falai/vibevoice')) {
+        options.headers['Content-Type'] = 'application/json';
+        options.body = JSON.stringify(data);
+      } else {
+        // 其他请求继续使用 FormData
+        options.body = createFormData(data);
+      }
     }
     
     try {
