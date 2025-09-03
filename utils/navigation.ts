@@ -15,10 +15,13 @@ export interface RouteItem {
 
 // 主路由配置
 export const mainRoutes: RouteItem[] = [
+  { id: "home", name: "Home",href: "/"},
+  {id: "VibeVoice", name: "VibeVoice",href: "/vibevoice"},
   { id: "samples", name: "Samples" },
   { id: "features", name: "Features" },
   { id: "showcase", name: "Showcase" },
   { id: "technology", name: "Technology" },
+  { id: "pricing", name: "Pricing" },
   { id: "faq", name: "FAQ" },
 ]
 

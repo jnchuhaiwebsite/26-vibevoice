@@ -6,6 +6,7 @@
             <VibeVoiceInteractiveShowcase />
             <VibeVoiceTechnology />
             <VibeVoiceUseCases />
+            <PricingPlans />
             <VibeVoiceFaq />
             <!-- <VibeVoiceCallToAction /> -->
     </div>

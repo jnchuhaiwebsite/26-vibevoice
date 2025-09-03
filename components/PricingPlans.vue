@@ -11,10 +11,11 @@
         class="text-center text-4xl font-bold mb-4"
         style="color: var(--text-color);"
       >
-        MuseSteamer AI Video Pricing
+      Pricing Plan - VibeVoice
+
       </h2>
       <p class="text-center max-w-2xl mx-auto mb-12" style="color: var(--text-muted-color);">
-        Discover MuseSteamer AI pricing for Turbo, Pro, Lite and Audio editions. Flexible plans for cinematic AI video creation with sound from MuseSteamer. Get your MuseSteamer AI Video plan today.
+        Try VibeVoice model for multi-speaker, long-form, high-quality conversational TTS.
       </p>
 
       <!-- Loading State -->
@@ -44,13 +45,12 @@
           ]"
           :style="{ 
             backgroundColor: 'var(--card-color)', 
-            borderColor: plan.is_popular ? '#DC8AF6' : 'var(--border-color)' 
+            borderColor: plan.is_popular ? '#2563EB' : 'var(--border-color)' 
           }"
         >
           <div
             v-if="plan.is_popular"
-            class="absolute -top-3 right-6 px-3 py-1 text-sm rounded-full"
-            style="background: var(--primary-gradient); color: white;"
+            class="absolute -top-3 right-6 px-3 py-1 text-sm rounded-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white"
           >
             Most Popular
           </div>
@@ -62,9 +62,9 @@
             <div class="bg-gradient-to-br from-banana-dark-bg to-gray-900 rounded-xl p-6 border border-white/10 shadow-sm">
               <div class="inline-flex items-baseline gap-2">
                 <span class="text-4xl font-bold text-banana-primary-yellow">${{ plan.price }}</span>
-                <span v-if="plan.price === 10" class="text-xl text-[#DC8AF6]/50 line-through">$12</span>
-                <span v-if="plan.price === 30" class="text-xl text-[#DC8AF6]/50 line-through">$33</span>
-                <span v-if="plan.price === 99" class="text-xl text-[#DC8AF6]/50 line-through">$129</span>
+                <span v-if="plan.price === 10" class="text-xl text-[#2563EB]/50 line-through">$12</span>
+                <span v-if="plan.price === 30" class="text-xl text-[#2563EB]/50 line-through">$33</span>
+                <span v-if="plan.price === 99" class="text-xl text-[#2563EB]/50 line-through">$129</span>
                 <span class="text-sm text-white/50 font-medium bg-gray-800/80 px-3 py-1 rounded-full shadow-sm">one-time</span>
               </div>
             </div>
@@ -84,7 +84,7 @@
             <button
               @click="plan.code ? handleUpgradePlan(plan) : null"
               :disabled="upgradingPlanId === plan.code"
-              :class="['btn w-full py-3', getButtonClass(plan)]"
+              :class="['btn w-full py-3 ', getButtonClass(plan)]"
             >
               <div v-if="upgradingPlanId === plan.code" class="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-current mr-2"></div>
               {{ plan.button_text }}
@@ -138,7 +138,7 @@ const getPlanFeatures = (plan: any): string[] => {
   // Get button class
 const getButtonClass = (plan: any): string => {
   if (plan.is_popular) {
-    return "btn-primary";
+    return "bg-[#2563EB] hover:bg-[#1D4ED8] text-white";
   } else {
     return "btn-secondary";
   }
