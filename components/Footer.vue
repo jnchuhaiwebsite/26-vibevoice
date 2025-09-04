@@ -41,15 +41,15 @@
             </p>
             <div class="text-sm">
               <p>© 2025 VibeVoice Project. All rights reserved.</p>
-              <p>
-                <a href="mailto:support@vibeVoices.net" class="footer-link" title="Email">support@vibeVoices.net</a>
+              <p class="text-sm text-white">
+                <a href="mailto:support@vibeVoices.net" class="footer-link" title="Email" >support@vibeVoices.net</a>
               </p>
             </div>
           </div>
         </div>
 
         <!-- 导航链接和法律条款 -->
-        <!-- <div class="flex-1 flex flex-col sm:flex-row gap-6 md:gap-8 md:justify-end">
+        <div class="flex-1 flex flex-col sm:flex-row gap-6 md:gap-8 md:justify-end">
 
           <div class="flex-1 text-center md:text-right">
             <div class="text-banana-text-light font-medium mb-4 text-sm md:text-lg">Legal</div>
@@ -64,7 +64,7 @@
               </NuxtLink>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
   </footer>
@@ -104,12 +104,12 @@ const { data: partnerSites, error } = await useAsyncData('partnerSites', async (
 
 <style scoped>
 .footer-link {
-  color: var(--text-muted-color);
+  color: #6A11CB;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-link:hover {
-  color: #83D0FB;
+  color: #6A11CB;
 }
 </style>

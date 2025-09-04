@@ -12,7 +12,18 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url></url>
+  <url>
+    <loc>https://www.vibevoices.net/subsidiary/terms-of-service</loc>
+    <lastmod>2025-09-04T01:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.vibevoices.net/subsidiary/privacy-policy</loc>
+    <lastmod>2025-09-04T01:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
   
 </urlset>
