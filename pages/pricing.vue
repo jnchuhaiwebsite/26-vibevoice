@@ -127,6 +127,9 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-12">
             <h2 class="text-3xl font-bold sm:text-4xl text-white">Frequently Asked Questions</h2>
+            <p class="mt-6 text-xl text-[#D1D5DB] max-w-6xl mx-auto">
+              We believe in simple and transparent pricing. This section provides straightforward answers to common questions about VibeVoice plans, credit usage, and account management. Find everything you need to know to get started, with no hidden surprises.
+            </p>
           </div>
           <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
             <div v-for="(faq, index) in faqs" :key="index" class="rounded-lg p-6 border transition-all duration-300 bg-[#1F2937] border-[#1F2937] card-glow">
