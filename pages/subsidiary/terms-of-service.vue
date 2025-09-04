@@ -1,8 +1,8 @@
 <template>
-  <div class="min-h-screen bg-banana-dark-bg text-banana-text-light font-['Inter']">
+  <div class="min-h-screen bg-[#0B0B12] text-[#D1D5DB] font-['Inter']">
     <div class="max-w-4xl mx-auto px-4 py-12">
       <div class="mb-6">
-        <NuxtLink to="/" class="flex items-center text-banana-text-muted hover:text-banana-primary-yellow transition-colors duration-200">
+        <NuxtLink to="/" class="flex items-center text-[#9CA3AF] hover:text-[#A78BFA] transition-colors duration-200">
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
@@ -11,62 +11,64 @@
       </div>
 
 
-      <div class="space-y-6 text-banana-text-muted leading-normal">
+      <div class="space-y-6 text-[#9CA3AF] leading-normal">
         <section>
-          <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight mb-8 text-banana-text-light">Terms of Service</h1>
-      <p class="text-banana-text-muted mb-8 text-lg">Effective Date: August 29,2025</p>
+          <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight mb-8 text-white">Terms of Service</h1>
+      <p class="text-[#9CA3AF] mb-8 text-lg">Effective Date: September 04, 2025</p>
       
-          <h2 class="text-2xl font-bold mb-4 text-banana-primary-yellow">1. Acceptance of Terms</h2>
-          <p>By accessing or using the MuseSteamer AI service ("Service"), you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access our Service.</p>
+          <h2 class="text-2xl font-bold mb-4 text-[#A78BFA]">1. Acceptance of Terms</h2>
+          <p>By accessing or using the VibeVoice service ("Service"), you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access our Service.</p>
 
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-banana-primary-yellow">2. Service Description</h2>
-          <p>MuseSteamer AI provides an advanced AI-powered platform for creative content generation, specializing in:</p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-[#A78BFA]">2. Service Description</h2>
+          <p>VibeVoice provides an advanced AI-powered platform for voice generation and text-to-speech services, specializing in:</p>
           <ul class="list-disc pl-6 mt-4 space-y-2">
-            <li><strong class="text-banana-text-light">Image-to-Video Generation</strong>: Creating dynamic videos from still images and textual descriptions.</li>
-            <li><strong class="text-banana-text-light">AI-Powered Video Editing</strong>: Modifying existing videos using natural language commands and multimodal inputs.</li>
-            <li><strong class="text-banana-text-light">Audio-Visual Integration</strong>: Generating videos with synchronized audio, including dialogue, sound effects, and ambient music.</li>
-            <li><strong class="text-banana-text-light">High-Quality Output</strong>: Generating high-resolution videos suitable for various applications, from social media to professional productions.</li>
+            <li><strong class="text-white">Multi-Speaker Voice Generation</strong>: Creating distinct, natural-sounding voices for different speakers from a single script.</li>
+            <li><strong class="text-white">Text-to-Speech Conversion</strong>: Converting written text into high-quality, natural-sounding speech using advanced AI technology.</li>
+            <li><strong class="text-white">Cross-Lingual Support</strong>: Generating consistent voice identities across English and Chinese languages.</li>
+            <li><strong class="text-white">Voice Cloning</strong>: Creating personalized voices from short audio samples for custom voice generation.</li>
+            <li><strong class="text-white">Commercial Use Rights</strong>: Providing generated audio content under MIT License for commercial applications.</li>
           </ul>
 
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-banana-primary-yellow">3. User Responsibilities</h2>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-[#A78BFA]">3. User Responsibilities</h2>
           <p>As a user, you agree to:</p>
           <ul class="list-disc pl-6 mt-4 space-y-2">
             <li>Provide accurate and complete registration information.</li>
             <li>Maintain the security of your account and password.</li>
             <li>Use the Service in compliance with all applicable laws and regulations.</li>
-            <li>Be solely responsible for the content you create and the prompts you provide.</li>
+            <li>Be solely responsible for the content you create and the scripts you provide.</li>
             <li>Respect the intellectual property rights of others.</li>
+            <li>Use the Service for legitimate purposes and not for creating misleading or harmful content.</li>
           </ul>
 
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-banana-primary-yellow">4. Intellectual Property Rights</h2>
-          <p>You retain ownership of the prompts you submit and the images and videos you upload for editing. You also own the rights to the videos generated by the Service based on your inputs. By using the Service, you grant MuseSteamer AI a worldwide, non-exclusive, royalty-free license to use, process, and store your content solely for the purpose of providing and improving the Service.</p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-[#A78BFA]">4. Intellectual Property Rights</h2>
+          <p>You retain ownership of the scripts you submit and the audio samples you upload for voice cloning. You also own the rights to the audio files generated by the Service based on your inputs. By using the Service, you grant VibeVoice a worldwide, non-exclusive, royalty-free license to use, process, and store your content solely for the purpose of providing and improving the Service.</p>
 
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-banana-primary-yellow">5. Prohibited Content and Conduct</h2>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-[#A78BFA]">5. Prohibited Content and Conduct</h2>
           <p>You may not use the Service to create or share content that is:</p>
           <ul class="list-disc pl-6 mt-4 space-y-2">
             <li>Illegal, harmful, fraudulent, or infringing on the rights of others.</li>
             <li>Hateful, discriminatory, harassing, or violent.</li>
-            <li>Sexually explicit or pornographic.</li>
             <li>Intended to deceive, mislead, or spread misinformation.</li>
-            <li>In violation of personal privacy.</li>
+            <li>In violation of personal privacy or impersonating real individuals without consent.</li>
+            <li>Used for creating deepfakes or other deceptive audio content.</li>
           </ul>
            <p class="mt-4">Engaging in activities such as reverse-engineering the Service, using automated scripts to generate content excessively, or interfering with the platform's operation is strictly prohibited.</p>
 
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-banana-primary-yellow">6. Subscription and Payment</h2>
-          <p>We offer both free and paid subscription plans. Specific features, limits, and pricing are detailed on our pricing page. Subscription fees are billed in advance on a recurring basis and are non-refundable except as required by law.</p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-[#A78BFA]">6. Credits and Payment</h2>
+          <p>We operate on a credit-based system where you purchase credits to generate audio content. Credits are valid forever and do not expire. Specific pricing and credit costs are detailed on our pricing page. All payments are processed securely through third-party payment processors.</p>
 
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-banana-primary-yellow">7. Service Modifications and Termination</h2>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-[#A78BFA]">7. Service Modifications and Termination</h2>
           <p>We reserve the right to modify, suspend, or discontinue the Service at any time, with or without notice. We may also terminate or suspend your access to the Service immediately if you breach these Terms.</p>
 
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-banana-primary-yellow">8. Disclaimer of Warranties</h2>
-          <p>The Service is provided "as is" and "as available" without any warranties, express or implied. MuseSteamer AI does not warrant that the service will be uninterrupted, error-free, or that the generated content will meet your specific requirements.</p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-[#A78BFA]">8. Disclaimer of Warranties</h2>
+          <p>The Service is provided "as is" and "as available" without any warranties, express or implied. VibeVoice does not warrant that the service will be uninterrupted, error-free, or that the generated audio content will meet your specific requirements.</p>
 
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-banana-primary-yellow">9. Limitation of Liability</h2>
-          <p>To the maximum extent permitted by law, MuseSteamer AI shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of the Service.</p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-[#A78BFA]">9. Limitation of Liability</h2>
+          <p>To the maximum extent permitted by law, VibeVoice shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of the Service.</p>
 
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-banana-primary-yellow">10. Contact Information</h2>
-          <p>For any questions or concerns regarding these Terms of Service, please contact us at: <a href="mailto:support@vibeVoices.net" class="text-banana-secondary-blue hover:underline">support@vibeVoices.net</a></p>
-          <p class="text-sm mt-8">Last updated: August 29,2025</p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-[#A78BFA]">10. Contact Information</h2>
+          <p>For any questions or concerns regarding these Terms of Service, please contact us at: <a href="mailto:support@vibevoices.net" class="text-[#60A5FA] hover:underline">support@vibevoices.net</a></p>
+          <p class="text-sm mt-8">Last updated: September 04,2025</p>
         </section>
 
       </div>
@@ -83,11 +85,11 @@ definePageMeta({
 })
 
 useSeo({
-  title: 'Terms of Service | MuseSteamer AI',
-  description: 'Read our terms of service for using MuseSteamer AI - the premier platform for image-to-video generation and AI-powered video editing.'
+  title: 'Terms of Service | VibeVoice',
+  description: 'Read our terms of service for using VibeVoice - the premier platform for AI-powered text-to-speech and voice generation.'
 })
 </script>
 
 <style>
 /* 移除不必要的全局样式，使用tailwind类名代替 */
-</style> 
+</style>
