@@ -22,9 +22,9 @@
                             </svg>
                             <div>
                                 <div class="mb-2 text-base font-semibold text-white">Advanced Architecture</div>
-                                <div class="text-sm font-medium text-[#9CA3AF]">VibeVoice utilizes a VALL-E style
-                                    architecture, treating TTS as a language modeling task for exceptionally
-                                    natural-sounding speech.</div>
+                                                                 <div class="text-sm font-medium text-[#9CA3AF]">VibeVoice utilizes a VALL-E style
+                                     architecture, treating TTS as a language modeling task for exceptionally
+                                     natural-sounding speech with VibeVoice.</div>
                             </div>
                         </li>
                         <li class="flex">
@@ -52,9 +52,9 @@
                             </svg>
                             <div>
                                 <div class="mb-2 text-base font-semibold text-white">Open-Source Foundation</div>
-                                <div class="text-sm font-medium text-[#9CA3AF]">Built on Microsoft's model, 
-                                    makes high-quality AI voice technology accessible to everyone through VibeVoice.
-                                </div>
+                                                                 <div class="text-sm font-medium text-[#9CA3AF]">Built on Microsoft's model, VibeVoice
+                                     makes high-quality AI voice technology accessible to everyone through VibeVoice.
+                                 </div>
                             </div>
                         </li>
                     </ul>
