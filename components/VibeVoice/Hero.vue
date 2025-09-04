@@ -8,7 +8,7 @@
            
             </h1>
             <p class="mt-6 text-xl text-[#D1D5DB] max-w-3xl mx-auto">
-                Orchestrate Lifelike Conversations. Powered by Microsoft VibeVoice TTS.
+                Orchestrate Lifelike Conversations. Powered by Microsoft VibeVoice TTS technology.
             </p>
             <div class="mt-10">
                 <VibeVoiceGenerator />

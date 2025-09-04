@@ -6,7 +6,7 @@
             <VibeVoiceInteractiveShowcase />
             <VibeVoiceTechnology />
             <VibeVoiceUseCases />
-            <CommentSection />
+            <!-- <CommentSection /> -->
             <!-- <PricingPlans /> -->
             <VibeVoiceFaq />
             <!-- <VibeVoiceCallToAction /> -->
