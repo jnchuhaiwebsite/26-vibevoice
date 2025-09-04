@@ -30,6 +30,7 @@
             <template v-for="(section, index) in sections" :key="index">
               <nuxt-link
                 :to="section.href || `/#${section.id}`"
+                :title="section.name"
                 class="relative text-banana-text-light hover:text-banana-primary-yellow transition-all cursor-pointer px-4 py-2.5 rounded-lg hover:shadow-lg whitespace-nowrapr" 
               >
                 {{ section.name }}
@@ -164,6 +165,7 @@ import { useNavigation } from "~/utils/navigation";
 import { useClerkAuth } from '~/utils/authHelper';
 import { useRouter, useRoute } from 'vue-router';
 import { useUserStore } from '~/stores/user';
+import { title } from "process";
 
 // 状态管理
 const isOpen = ref(false);
