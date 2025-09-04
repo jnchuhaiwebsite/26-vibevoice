@@ -128,7 +128,7 @@
           <div class="text-center mb-12">
             <h2 class="text-3xl font-bold sm:text-4xl text-white">Frequently Asked Questions</h2>
             <p class="mt-6 text-xl text-[#D1D5DB] max-w-6xl mx-auto">
-              We believe in simple and transparent pricing. This section provides straightforward answers to common questions about VibeVoice plans, credit usage, and account management. Find everything you need to know to get started, with no hidden surprises.
+              Clear answers to your questions about VibeVoice plans, credits, and billing. Need more help? Email us at <a href="mailto:support@vibeVoices.net" class="text-[#2563EB] hover:underline">support@vibeVoices.net</a>.
             </p>
           </div>
           <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
