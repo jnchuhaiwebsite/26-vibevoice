@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen  text-slate-300">
+  <div class="min-h-screen bg-[#0B0B12] text-[#D1D5DB]">
     <div class="pt-20">
       <Breadcrumbs :items="breadcrumbItems" />
     </div>
@@ -19,8 +19,8 @@
 
       <!-- Error state -->
       <div v-else-if="error" class="text-center py-20">
-        <h2 class="text-2xl font-bold text-slate-100 mb-4">Loading Failed</h2>
-        <p class="text-slate-400 mb-8">{{ error }}</p>
+        <h2 class="text-2xl font-bold text-[#D1D5DB] mb-4">Loading Failed</h2>
+        <p class="text-[#8B949E] mb-8">{{ error }}</p>
         <button 
           @click="loadBlogData"
           class="relative inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-base font-bold text-white bg-gradient-to-r from-[#6209F6] via-[#DC8AF6] to-[#83D0FB] shadow-[0_10px_35px_rgba(98,9,246,.35)] hover:opacity-95 active:scale-[.98] transition-all"
@@ -30,44 +30,42 @@
       </div>
 
       <!-- Blog content -->
-      <article v-else-if="post" class="prose prose-lg max-w-none bg-gray-800/80 p-6 md:p-8 rounded-xl shadow-2xl   backdrop-blur-xl">
-        <h1 class="text-3xl md:text-4xl font-bold mb-6 text-slate-100 border-l-4 border-[#6209F6] pl-4">{{ post.title }}</h1>
+      <article v-else-if="post" class="prose prose-lg max-w-none bg-[#161B22] p-6 md:p-8 rounded-xl shadow-2xl backdrop-blur-xl border border-[#30363D]">
+        <h1 class="text-3xl md:text-4xl font-bold mb-6 text-[#D1D5DB] border-l-4 border-[#6209F6] pl-4">{{ post.title }}</h1>
         
         <div class="flex items-center gap-4 mb-8">
-          <span class="px-3 py-1 bg-gradient-to-r from-[#6209F6]/80 to-[#83D0FB]/80 text-white text-sm rounded-full font-medium">
-            {{ getCategoryLabel(post.class_id) }}
-          </span>
-          <span class="text-slate-500 text-sm">{{ formatDate(post.created_time) }}</span>
+
+          <span class="text-[#8B949E] text-sm">{{ formatDate(post.created_time) }}</span>
         </div>
 
         <!-- Rich text content -->
-        <div class="text-slate-300 space-y-6 
-          [&>h1]:text-2xl [&>h1]:font-bold [&>h1]:text-slate-100 
-          [&>h2]:text-xl [&>h2]:font-bold [&>h2]:text-slate-100 
-          [&>h3]:text-lg [&>h3]:font-bold [&>h3]:text-slate-100 
-          [&>p]:text-slate-300 [&>p]:leading-relaxed 
+        <div class="text-[#D1D5DB] space-y-6 
+          [&>h1]:text-2xl [&>h1]:font-bold [&>h1]:text-[#D1D5DB] 
+          [&>h2]:text-xl [&>h2]:font-bold [&>h2]:text-[#D1D5DB] 
+          [&>h3]:text-lg [&>h3]:font-bold [&>h3]:text-[#D1D5DB] 
+          [&>p]:text-[#D1D5DB] [&>p]:leading-relaxed 
           [&>a]:text-[#83D0FB] [&>a]:hover:text-[#6209F6] 
-          [&>strong]:text-slate-100 
-          [&>code]:text-slate-200 [&>code]:bg-gray-700/60 [&>code]:px-2 [&>code]:py-1 [&>code]:rounded 
-          [&>blockquote]:border-l-4 [&>blockquote]:border-[#6209F6] [&>blockquote]:pl-4 [&>blockquote]:text-slate-400 [&>blockquote]:bg-gray-800/60 [&>blockquote]:py-2 
-          [&>hr]:border-white/10 
-          [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:marker:text-slate-500 
-          [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:marker:text-slate-500 
-          [&>img]:max-w-full [&>img]:h-auto [&>img]:rounded-lg [&>img]:shadow-md [&>img]:my-4 [&>img]:mx-auto [&>img]:block [&>img]:border [&>img]:border-white/10 [&>img]:hover:shadow-lg [&>img]:transition-shadow [&>img]:duration-300" 
+          [&>strong]:text-[#D1D5DB] 
+          [&>code]:text-[#D1D5DB] [&>code]:bg-[#21262D] [&>code]:px-2 [&>code]:py-1 [&>code]:rounded [&>code]:border [&>code]:border-[#30363D]
+          [&>blockquote]:border-l-4 [&>blockquote]:border-[#6209F6] [&>blockquote]:pl-4 [&>blockquote]:text-[#8B949E] [&>blockquote]:bg-[#21262D] [&>blockquote]:py-2 [&>blockquote]:rounded-r-lg
+          [&>hr]:border-[#30363D] 
+          [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:marker:text-[#8B949E] 
+          [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:marker:text-[#8B949E] 
+          [&>img]:max-w-full [&>img]:h-auto [&>img]:rounded-lg [&>img]:shadow-md [&>img]:my-4 [&>img]:mx-auto [&>img]:block [&>img]:border [&>img]:border-[#30363D] [&>img]:hover:shadow-lg [&>img]:transition-shadow [&>img]:duration-300" 
           v-html="processedContent"></div>
 
         <!-- Related articles section -->
-        <div class="mt-12 pt-8 border-t border-white/10" v-if="relatedPosts.length > 0">
-          <h3 class="text-xl font-bold text-slate-100 mb-6">Related Articles</h3>
+        <div class="mt-12 pt-8 border-t border-[#30363D]" v-if="relatedPosts.length > 0">
+          <h3 class="text-xl font-bold text-[#D1D5DB] mb-6">Related Articles</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <NuxtLink 
               v-for="relatedPost in relatedPosts" 
               :key="relatedPost.id"
               :to="`/blog/${relatedPost.url}`"
-              class="p-4 border border-white/10 rounded-lg hover:bg-gray-700/70 hover:border-[#6209F6] transition-all group"
+              class="p-4 border border-[#30363D] rounded-lg hover:bg-[#21262D] hover:border-[#6209F6] transition-all group bg-[#161B22]"
             >
-              <h2 class="font-medium mb-2 text-lg text-slate-100 group-hover:text-[#83D0FB] transition-colors">{{ relatedPost.title }}</h2>
-              <p class="text-sm text-slate-400 line-clamp-2">{{ relatedPost.abstract }}</p>
+              <h2 class="font-medium mb-2 text-lg text-[#D1D5DB] group-hover:text-[#83D0FB] transition-colors">{{ relatedPost.title }}</h2>
+              <p class="text-sm text-[#8B949E] line-clamp-2">{{ relatedPost.abstract }}</p>
             </NuxtLink>
           </div>
         </div>
@@ -76,7 +74,7 @@
         <div class="text-center mt-12">
           <button
             @click="handleBackHome"
-            class="relative inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-base font-bold text-white bg-gradient-to-r from-[#6209F6] via-[#DC8AF6] to-[#83D0FB] shadow-[0_10px_35px_rgba(98,9,246,.35)] hover:opacity-95 active:scale-[.98] transition-all"
+            class="relative inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-base font-bold text-white bg-gradient-to-r from-[#6A11CB] to-[#2575FC] shadow-[0_10px_35px_rgba(98,9,246,.35)] hover:opacity-95 active:scale-[.98] transition-all"
           >
             <span class="mr-2">🏠</span>
             Back to home
@@ -86,11 +84,11 @@
       
       <!-- Not found state -->
       <div v-else-if="!post && !isNavigating" class="text-center py-20">
-        <h2 class="text-2xl font-bold text-slate-100 mb-4">Blog Post Not Found</h2>
-        <p class="text-slate-400 mb-8">The blog post you are looking for does not exist or has been deleted.</p>
+        <h2 class="text-2xl font-bold text-[#D1D5DB] mb-4">Blog Post Not Found</h2>
+        <p class="text-[#8B949E] mb-8">The blog post you are looking for does not exist or has been deleted.</p>
         <NuxtLink 
           to="/blog" 
-          class="relative inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-base font-bold text-white bg-gradient-to-r from-[#6209F6] via-[#DC8AF6] to-[#83D0FB] shadow-[0_10px_35px_rgba(98,9,246,.35)] hover:opacity-95 active:scale-[.98] transition-all"
+          class="relative inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-base font-bold text-white bg-gradient-to-r  from-[#6A11CB] to-[#2575FC]  shadow-[0_10px_35px_rgba(98,9,246,.35)] hover:opacity-95 active:scale-[.98] transition-all"
         >
           Back to Blog List
           <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -219,7 +217,7 @@ const post = computed(() => {
 });
 
 const breadcrumbItems = ref([
-  { text: 'MuseSteamer AI Blog', to: '/blog'  },
+  { text: 'VibeVoice Blog', to: '/blog'  },
   { text: post.value?.url } 
 ]);
 
